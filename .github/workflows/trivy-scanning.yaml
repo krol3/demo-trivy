@@ -9,7 +9,7 @@ env:
   ORG: "krol"
 jobs:
   build:
-    name: Build
+    name: scanning-image
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout code
@@ -18,33 +18,6 @@ jobs:
       - name: Build an image from Dockerfile
         run: |
           docker build -t docker.io/${{ env.ORG }}/my-app:${{ github.sha }} .
-
-      - name: Trivy - misconfiguration artifacts
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: 'config'
-          hide-progress: false
-          format: 'table'
-          exit-code: '0'
-          ignore-unfixed: true
-          severity: 'CRITICAL,HIGH,MEDIUM'
-
-      - name: Trivy - misconfiguration artifacts - sarif.tpl
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: 'config'
-          hide-progress: false
-          format: 'template'
-          template: '@/contrib/sarif.tpl'
-          exit-code: '0'
-          ignore-unfixed: true
-          severity: 'CRITICAL,HIGH,MEDIUM'
-          output: 'trivy.sarif'
-
-      - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: 'trivy.sarif'
 
       - name: Trivy - vulnerability Scanner
         uses: aquasecurity/trivy-action@master
