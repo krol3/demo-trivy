@@ -12,7 +12,7 @@ RUN cd $HOME \
  && chown -R jboss:0 ${JBOSS_HOME} \
  && chmod -R g+rw ${JBOSS_HOME}
 ENV LAUNCH_JBOSS_IN_BACKGROUND true
-#USER jboss
+USER jboss
 EXPOSE 8080
 CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0"]
 
