@@ -1,4 +1,4 @@
-name: build
+name: build-scanning
 on:
   push:
     branches:

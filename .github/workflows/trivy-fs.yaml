@@ -1,4 +1,4 @@
-name: build-misconf
+name: build-fs
 on:
   push:
     branches:
@@ -9,36 +9,47 @@ env:
   ORG: "krol"
 jobs:
   build:
-    name: missconfiguration
+    name: filesystem
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Trivy - misconfiguration artifacts
+      - name: Trivy - fs
         uses: aquasecurity/trivy-action@master
         with:
-          scan-type: 'config'
+          scan-type: 'fs'
           hide-progress: false
           format: 'table'
           exit-code: '0'
           ignore-unfixed: true
-          severity: 'CRITICAL,HIGH,MEDIUM'
+          severity: 'CRITICAL'
 
-      - name: Trivy - misconfiguration artifacts - sarif.tpl
+      - name: Trivy - fs - ALL - sarif.tpl
         uses: aquasecurity/trivy-action@master
         with:
-          scan-type: 'config'
+          scan-type: 'fs'
           hide-progress: false
           format: 'template'
           template: '@/contrib/sarif.tpl'
           exit-code: '0'
           ignore-unfixed: true
-          severity: 'CRITICAL,HIGH,MEDIUM'
-          output: 'trivy-config.sarif'
+          output: 'trivy-fs.sarif'
+
+      - name: Trivy - fs - sarif.tpl
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          hide-progress: false
+          format: 'template'
+          template: '@/contrib/sarif.tpl'
+          exit-code: '0'
+          ignore-unfixed: true
+          severity: 'CRITICAL'
+          output: 'trivy-fs.sarif'
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v1
         with:
-          sarif_file: 'trivy-config.sarif'
+          sarif_file: 'trivy-fs.sarif'
 
