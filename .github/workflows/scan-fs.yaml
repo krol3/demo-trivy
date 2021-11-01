@@ -1,0 +1,43 @@
+name: scan-fs
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+env:
+  ORG: "krol"
+jobs:
+  scan-fs:
+    name: filesystem
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Trivy - fs
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          hide-progress: false
+          format: 'table'
+          exit-code: '0'
+          ignore-unfixed: true
+          severity: 'HIGH,CRITICAL'
+
+      - name: Trivy - fs - sarif.tpl
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          hide-progress: false
+          format: 'template'
+          template: '@/contrib/sarif.tpl'
+          exit-code: '0'
+          ignore-unfixed: true
+          severity: 'HIGH,CRITICAL'
+          output: 'trivy-fs.sarif'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@main
+        with:
+          sarif_file: 'trivy-fs.sarif'

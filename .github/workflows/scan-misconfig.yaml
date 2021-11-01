@@ -1,0 +1,43 @@
+name: scan-missconfig
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+env:
+  ORG: "krol"
+jobs:
+  scan-missconfig:
+    name: missconfiguration
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Trivy - misconfiguration artifacts
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'config'
+          hide-progress: false
+          format: 'table'
+          exit-code: '0'
+          ignore-unfixed: true
+          severity: 'CRITICAL,HIGH,MEDIUM'
+
+      - name: Trivy - misconfiguration artifacts - sarif.tpl
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'config'
+          hide-progress: false
+          format: 'template'
+          template: '@/contrib/sarif.tpl'
+          exit-code: '0'
+          ignore-unfixed: true
+          severity: 'CRITICAL,HIGH,MEDIUM'
+          output: 'trivy-config.sarif'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@main
+        with:
+          sarif_file: 'trivy-config.sarif'
