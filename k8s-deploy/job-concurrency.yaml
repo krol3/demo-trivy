@@ -1,0 +1,10 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: my-cron-job
+spec:
+  schedule: '*/1 * * * *'
+  startingDeadlineSeconds: 10
+  concurrencyPolicy: Allow # Allow (default)
+
+# https://kubernetes.io/docs/tasks/job/automated-tasks-with-cron-jobs/

