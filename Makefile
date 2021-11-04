@@ -15,8 +15,8 @@ scan-image :
 
 missconf-k8s-custom-rego:
 	@echo "Custom Rego rules with Trivy...."
-	trivy conf --severity CRITICAL --policy ./policy --namespaces demo .
+	trivy --debug conf --severity CRITICAL --policy ./policy/k8s --namespaces myk8s .
 
 missconf-docker-custom-rego:
 	@echo "Nodejs Docker rules with Trivy and OPA...."
-	trivy conf --severity CRITICAL --policy ./policy --namespaces demo .
+	trivy --debug conf --severity CRITICAL --policy ./policy/container --namespaces mycontainer .

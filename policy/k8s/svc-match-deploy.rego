@@ -1,8 +1,8 @@
-package demo.kubernetes.ID003
+package myk8s.kubernetes.ID003
 
 __rego_metadata__ := {
 	"id": "ID003",
-	"title": "Servide does not target Pod",
+	"title": "Service does not target Pod",
 	"severity": "CRITICAL",
 	"type": "Kubernetes Custom Check - DEMO",
 	"description": "Service selector does not match any Pod label",
