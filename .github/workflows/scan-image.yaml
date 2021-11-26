@@ -21,7 +21,7 @@ jobs:
           docker build -t docker.io/${{ env.ORG }}/my-app:${{ github.sha }} .
 
       - name: Trivy - vulnerability Scanner
-        uses: aquasecurity/trivy-action@master
+        uses: NickLiffen/trivy-action@patch-1
         with:
           image-ref: 'docker.io/${{ env.ORG }}/my-app:${{ github.sha }}'
           format: 'table'
@@ -31,7 +31,7 @@ jobs:
           severity: 'HIGH,CRITICAL'
 
       - name: Trivy - vulnerability Scanner - sarif.tpl
-        uses: aquasecurity/trivy-action@master
+        uses: NickLiffen/trivy-action@patch-1
         with:
           image-ref: 'docker.io/${{ env.ORG }}/my-app:${{ github.sha }}'
           format: 'template'
