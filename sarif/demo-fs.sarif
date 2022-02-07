@@ -1,0 +1,506 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "fullName": "Trivy Vulnerability Scanner",
+          "informationUri": "https://github.com/aquasecurity/trivy",
+          "name": "Trivy",
+          "rules": [
+            {
+              "id": "CVE-2019-17592",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2019-17592"
+              },
+              "fullDescription": {
+                "text": "The csv-parse module before 4.4.6 for Node.js is vulnerable to Regular Expression Denial of Service. The __isInt() function contains a malformed regular expression that processes large crafted input very slowly. This is triggered when using the cast option."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2019-17592",
+              "help": {
+                "text": "Vulnerability CVE-2019-17592\nSeverity: HIGH\nPackage: csv-parse\nFixed Version: 4.4.6\nLink: [CVE-2019-17592](https://avd.aquasec.com/nvd/cve-2019-17592)\nThe csv-parse module before 4.4.6 for Node.js is vulnerable to Regular Expression Denial of Service. The __isInt() function contains a malformed regular expression that processes large crafted input very slowly. This is triggered when using the cast option.",
+                "markdown": "**Vulnerability CVE-2019-17592**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|HIGH|csv-parse|4.4.6|[CVE-2019-17592](https://avd.aquasec.com/nvd/cve-2019-17592)|\n\nThe csv-parse module before 4.4.6 for Node.js is vulnerable to Regular Expression Denial of Service. The __isInt() function contains a malformed regular expression that processes large crafted input very slowly. This is triggered when using the cast option."
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "8.0",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "HIGH"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2020-7764",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2020-7764"
+              },
+              "fullDescription": {
+                "text": "This affects the package find-my-way before 2.2.5, from 3.0.0 and before 3.0.5. It accepts the Accept-Version\u0026#39; header by default, and if versioned routes are not being used, this could lead to a denial of service. Accept-Version can be used as an unkeyed header in a cache poisoning attack."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2020-7764",
+              "help": {
+                "text": "Vulnerability CVE-2020-7764\nSeverity: MEDIUM\nPackage: find-my-way\nFixed Version: 3.0.5, 2.2.5\nLink: [CVE-2020-7764](https://avd.aquasec.com/nvd/cve-2020-7764)\nThis affects the package find-my-way before 2.2.5, from 3.0.0 and before 3.0.5. It accepts the Accept-Version' header by default, and if versioned routes are not being used, this could lead to a denial of service. Accept-Version can be used as an unkeyed header in a cache poisoning attack.",
+                "markdown": "**Vulnerability CVE-2020-7764**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|MEDIUM|find-my-way|3.0.5, 2.2.5|[CVE-2020-7764](https://avd.aquasec.com/nvd/cve-2020-7764)|\n\nThis affects the package find-my-way before 2.2.5, from 3.0.0 and before 3.0.5. It accepts the Accept-Version' header by default, and if versioned routes are not being used, this could lead to a denial of service. Accept-Version can be used as an unkeyed header in a cache poisoning attack."
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "5.5",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "GHSA-8j8c-7jfh-h6hx",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "GHSA-8j8c-7jfh-h6hx"
+              },
+              "fullDescription": {
+                "text": "Versions of `js-yaml` prior to 3.13.1 are vulnerable to Code Injection. The `load()` function may execute arbitrary code injected through a malicious YAML file. Objects that have `toString` as key, JavaScript code as value and are used as explicit mapping keys allow attackers to execute the supplied code through the `load()` function. The `safeLoad()` function is unaffected.\n\nAn example payload is \n`{ toString: !\u0026lt;tag:yaml.org,2002:js/function\u0026gt; \u0026#39;function (){return Date.now()}\u0026#39; } : 1` \nwhich returns the object \n{\n  \u0026#34;1553107949161\u0026#34;: 1\n}\n\n\n## Recommendation\n\nUpgrade to version 3.13.1."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://github.com/advisories/GHSA-8j8c-7jfh-h6hx",
+              "help": {
+                "text": "Vulnerability GHSA-8j8c-7jfh-h6hx\nSeverity: HIGH\nPackage: js-yaml\nFixed Version: 3.13.1\nLink: [GHSA-8j8c-7jfh-h6hx](https://github.com/advisories/GHSA-8j8c-7jfh-h6hx)\nVersions of `js-yaml` prior to 3.13.1 are vulnerable to Code Injection. The `load()` function may execute arbitrary code injected through a malicious YAML file. Objects that have `toString` as key, JavaScript code as value and are used as explicit mapping keys allow attackers to execute the supplied code through the `load()` function. The `safeLoad()` function is unaffected.\n\nAn example payload is \n`{ toString: !\u003ctag:yaml.org,2002:js/function\u003e 'function (){return Date.now()}' } : 1` \nwhich returns the object \n{\n  \"1553107949161\": 1\n}\n\n\n## Recommendation\n\nUpgrade to version 3.13.1.",
+                "markdown": "**Vulnerability GHSA-8j8c-7jfh-h6hx**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|HIGH|js-yaml|3.13.1|[GHSA-8j8c-7jfh-h6hx](https://github.com/advisories/GHSA-8j8c-7jfh-h6hx)|\n\nVersions of `js-yaml` prior to 3.13.1 are vulnerable to Code Injection. The `load()` function may execute arbitrary code injected through a malicious YAML file. Objects that have `toString` as key, JavaScript code as value and are used as explicit mapping keys allow attackers to execute the supplied code through the `load()` function. The `safeLoad()` function is unaffected.\n\nAn example payload is \n`{ toString: !\u003ctag:yaml.org,2002:js/function\u003e 'function (){return Date.now()}' } : 1` \nwhich returns the object \n{\n  \"1553107949161\": 1\n}\n\n\n## Recommendation\n\nUpgrade to version 3.13.1."
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "8.0",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "HIGH"
+                ]
+              }
+            },
+            {
+              "id": "GHSA-2pr6-76vf-7546",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "GHSA-2pr6-76vf-7546"
+              },
+              "fullDescription": {
+                "text": "Versions of `js-yaml` prior to 3.13.0 are vulnerable to Denial of Service. By parsing a carefully-crafted YAML file, the node process stalls and may exhaust system resources leading to a Denial of Service.\n\n\n## Recommendation\n\nUpgrade to version 3.13.0."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://github.com/advisories/GHSA-2pr6-76vf-7546",
+              "help": {
+                "text": "Vulnerability GHSA-2pr6-76vf-7546\nSeverity: MEDIUM\nPackage: js-yaml\nFixed Version: 3.13.0\nLink: [GHSA-2pr6-76vf-7546](https://github.com/advisories/GHSA-2pr6-76vf-7546)\nVersions of `js-yaml` prior to 3.13.0 are vulnerable to Denial of Service. By parsing a carefully-crafted YAML file, the node process stalls and may exhaust system resources leading to a Denial of Service.\n\n\n## Recommendation\n\nUpgrade to version 3.13.0.",
+                "markdown": "**Vulnerability GHSA-2pr6-76vf-7546**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|MEDIUM|js-yaml|3.13.0|[GHSA-2pr6-76vf-7546](https://github.com/advisories/GHSA-2pr6-76vf-7546)|\n\nVersions of `js-yaml` prior to 3.13.0 are vulnerable to Denial of Service. By parsing a carefully-crafted YAML file, the node process stalls and may exhaust system resources leading to a Denial of Service.\n\n\n## Recommendation\n\nUpgrade to version 3.13.0."
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "5.5",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2021-3918",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2021-3918"
+              },
+              "fullDescription": {
+                "text": "json-schema is vulnerable to Improperly Controlled Modification of Object Prototype Attributes (\u0026#39;Prototype Pollution\u0026#39;)"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2021-3918",
+              "help": {
+                "text": "Vulnerability CVE-2021-3918\nSeverity: MEDIUM\nPackage: json-schema\nFixed Version: 0.4.0\nLink: [CVE-2021-3918](https://avd.aquasec.com/nvd/cve-2021-3918)\njson-schema is vulnerable to Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')",
+                "markdown": "**Vulnerability CVE-2021-3918**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|MEDIUM|json-schema|0.4.0|[CVE-2021-3918](https://avd.aquasec.com/nvd/cve-2021-3918)|\n\njson-schema is vulnerable to Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')"
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "5.5",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2019-10744",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2019-10744"
+              },
+              "fullDescription": {
+                "text": "Versions of lodash lower than 4.17.12 are vulnerable to Prototype Pollution. The function defaultsDeep could be tricked into adding or modifying properties of Object.prototype using a constructor payload."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2019-10744",
+              "help": {
+                "text": "Vulnerability CVE-2019-10744\nSeverity: CRITICAL\nPackage: lodash\nFixed Version: 4.17.12\nLink: [CVE-2019-10744](https://avd.aquasec.com/nvd/cve-2019-10744)\nVersions of lodash lower than 4.17.12 are vulnerable to Prototype Pollution. The function defaultsDeep could be tricked into adding or modifying properties of Object.prototype using a constructor payload.",
+                "markdown": "**Vulnerability CVE-2019-10744**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|CRITICAL|lodash|4.17.12|[CVE-2019-10744](https://avd.aquasec.com/nvd/cve-2019-10744)|\n\nVersions of lodash lower than 4.17.12 are vulnerable to Prototype Pollution. The function defaultsDeep could be tricked into adding or modifying properties of Object.prototype using a constructor payload."
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "9.5",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "CRITICAL"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2020-8203",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2020-8203"
+              },
+              "fullDescription": {
+                "text": "Prototype pollution attack when using _.zipObjectDeep in lodash before 4.17.20."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2020-8203",
+              "help": {
+                "text": "Vulnerability CVE-2020-8203\nSeverity: HIGH\nPackage: lodash\nFixed Version: 4.17.19\nLink: [CVE-2020-8203](https://avd.aquasec.com/nvd/cve-2020-8203)\nPrototype pollution attack when using _.zipObjectDeep in lodash before 4.17.20.",
+                "markdown": "**Vulnerability CVE-2020-8203**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|HIGH|lodash|4.17.19|[CVE-2020-8203](https://avd.aquasec.com/nvd/cve-2020-8203)|\n\nPrototype pollution attack when using _.zipObjectDeep in lodash before 4.17.20."
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "8.0",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "HIGH"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2021-23337",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2021-23337"
+              },
+              "fullDescription": {
+                "text": "Lodash versions prior to 4.17.21 are vulnerable to Command Injection via the template function."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2021-23337",
+              "help": {
+                "text": "Vulnerability CVE-2021-23337\nSeverity: HIGH\nPackage: lodash\nFixed Version: 4.17.21\nLink: [CVE-2021-23337](https://avd.aquasec.com/nvd/cve-2021-23337)\nLodash versions prior to 4.17.21 are vulnerable to Command Injection via the template function.",
+                "markdown": "**Vulnerability CVE-2021-23337**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|HIGH|lodash|4.17.21|[CVE-2021-23337](https://avd.aquasec.com/nvd/cve-2021-23337)|\n\nLodash versions prior to 4.17.21 are vulnerable to Command Injection via the template function."
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "8.0",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "HIGH"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2020-28500",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2020-28500"
+              },
+              "fullDescription": {
+                "text": "Lodash versions prior to 4.17.21 are vulnerable to Regular Expression Denial of Service (ReDoS) via the toNumber, trim and trimEnd functions."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2020-28500",
+              "help": {
+                "text": "Vulnerability CVE-2020-28500\nSeverity: MEDIUM\nPackage: lodash\nFixed Version: 4.17.21\nLink: [CVE-2020-28500](https://avd.aquasec.com/nvd/cve-2020-28500)\nLodash versions prior to 4.17.21 are vulnerable to Regular Expression Denial of Service (ReDoS) via the toNumber, trim and trimEnd functions.",
+                "markdown": "**Vulnerability CVE-2020-28500**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|MEDIUM|lodash|4.17.21|[CVE-2020-28500](https://avd.aquasec.com/nvd/cve-2020-28500)|\n\nLodash versions prior to 4.17.21 are vulnerable to Regular Expression Denial of Service (ReDoS) via the toNumber, trim and trimEnd functions."
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "5.5",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2020-7598",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2020-7598"
+              },
+              "fullDescription": {
+                "text": "minimist before 1.2.2 could be tricked into adding or modifying properties of Object.prototype using a \u0026#34;constructor\u0026#34; or \u0026#34;__proto__\u0026#34; payload."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2020-7598",
+              "help": {
+                "text": "Vulnerability CVE-2020-7598\nSeverity: MEDIUM\nPackage: minimist\nFixed Version: 1.2.3, 0.2.1\nLink: [CVE-2020-7598](https://avd.aquasec.com/nvd/cve-2020-7598)\nminimist before 1.2.2 could be tricked into adding or modifying properties of Object.prototype using a \"constructor\" or \"__proto__\" payload.",
+                "markdown": "**Vulnerability CVE-2020-7598**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|MEDIUM|minimist|1.2.3, 0.2.1|[CVE-2020-7598](https://avd.aquasec.com/nvd/cve-2020-7598)|\n\nminimist before 1.2.2 could be tricked into adding or modifying properties of Object.prototype using a \"constructor\" or \"__proto__\" payload."
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "5.5",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "MEDIUM"
+                ]
+              }
+            }
+          ],
+          "version": "0.23.0"
+        }
+      },
+      "results": [
+        {
+          "ruleId": "CVE-2019-17592",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Package: csv-parse\nInstalled Version: 1.3.3\nVulnerability CVE-2019-17592\nSeverity: HIGH\nFixed Version: 4.4.6\nLink: [CVE-2019-17592](https://avd.aquasec.com/nvd/cve-2019-17592)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2020-7764",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Package: find-my-way\nInstalled Version: 1.15.4\nVulnerability CVE-2020-7764\nSeverity: MEDIUM\nFixed Version: 3.0.5, 2.2.5\nLink: [CVE-2020-7764](https://avd.aquasec.com/nvd/cve-2020-7764)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "GHSA-8j8c-7jfh-h6hx",
+          "ruleIndex": 2,
+          "level": "error",
+          "message": {
+            "text": "Package: js-yaml\nInstalled Version: 3.10.0\nVulnerability GHSA-8j8c-7jfh-h6hx\nSeverity: HIGH\nFixed Version: 3.13.1\nLink: [GHSA-8j8c-7jfh-h6hx](https://github.com/advisories/GHSA-8j8c-7jfh-h6hx)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "GHSA-2pr6-76vf-7546",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "Package: js-yaml\nInstalled Version: 3.10.0\nVulnerability GHSA-2pr6-76vf-7546\nSeverity: MEDIUM\nFixed Version: 3.13.0\nLink: [GHSA-2pr6-76vf-7546](https://github.com/advisories/GHSA-2pr6-76vf-7546)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2021-3918",
+          "ruleIndex": 4,
+          "level": "warning",
+          "message": {
+            "text": "Package: json-schema\nInstalled Version: 0.2.3\nVulnerability CVE-2021-3918\nSeverity: MEDIUM\nFixed Version: 0.4.0\nLink: [CVE-2021-3918](https://avd.aquasec.com/nvd/cve-2021-3918)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2019-10744",
+          "ruleIndex": 5,
+          "level": "error",
+          "message": {
+            "text": "Package: lodash\nInstalled Version: 4.17.11\nVulnerability CVE-2019-10744\nSeverity: CRITICAL\nFixed Version: 4.17.12\nLink: [CVE-2019-10744](https://avd.aquasec.com/nvd/cve-2019-10744)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2020-8203",
+          "ruleIndex": 6,
+          "level": "error",
+          "message": {
+            "text": "Package: lodash\nInstalled Version: 4.17.11\nVulnerability CVE-2020-8203\nSeverity: HIGH\nFixed Version: 4.17.19\nLink: [CVE-2020-8203](https://avd.aquasec.com/nvd/cve-2020-8203)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2021-23337",
+          "ruleIndex": 7,
+          "level": "error",
+          "message": {
+            "text": "Package: lodash\nInstalled Version: 4.17.11\nVulnerability CVE-2021-23337\nSeverity: HIGH\nFixed Version: 4.17.21\nLink: [CVE-2021-23337](https://avd.aquasec.com/nvd/cve-2021-23337)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2020-28500",
+          "ruleIndex": 8,
+          "level": "warning",
+          "message": {
+            "text": "Package: lodash\nInstalled Version: 4.17.11\nVulnerability CVE-2020-28500\nSeverity: MEDIUM\nFixed Version: 4.17.21\nLink: [CVE-2020-28500](https://avd.aquasec.com/nvd/cve-2020-28500)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2020-7598",
+          "ruleIndex": 9,
+          "level": "warning",
+          "message": {
+            "text": "Package: minimist\nInstalled Version: 0.0.8\nVulnerability CVE-2020-7598\nSeverity: MEDIUM\nFixed Version: 1.2.3, 0.2.1\nLink: [CVE-2020-7598](https://avd.aquasec.com/nvd/cve-2020-7598)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "columnKind": "utf16CodeUnits",
+      "originalUriBaseIds": {
+        "ROOTPATH": {
+          "uri": "file:///"
+        }
+      }
+    }
+  ]
+}
