@@ -12,7 +12,7 @@ jobs:
     name: missconfiguration
     runs-on: ubuntu-20.04
     permissions:
-      security-events: write
+      security-events: write # https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -32,8 +32,7 @@ jobs:
         with:
           scan-type: 'config'
           hide-progress: false
-          format: 'template'
-          template: '@/contrib/sarif.tpl'
+          format: 'sarif'
           exit-code: '0'
           ignore-unfixed: true
           severity: 'CRITICAL,HIGH,MEDIUM'

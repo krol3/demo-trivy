@@ -12,7 +12,7 @@ jobs:
     name: filesystem
     runs-on: ubuntu-20.04
     permissions:
-      security-events: write
+      security-events: write # https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -27,13 +27,12 @@ jobs:
           ignore-unfixed: true
           severity: 'HIGH,CRITICAL'
 
-      - name: Trivy - fs - sarif.tpl
+      - name: Trivy - file system - sarif
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'fs'
           hide-progress: false
-          format: 'template'
-          template: '@/contrib/sarif.tpl'
+          format: 'sarif'
           exit-code: '0'
           ignore-unfixed: true
           severity: 'HIGH,CRITICAL'
